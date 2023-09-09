@@ -25,6 +25,7 @@ const express = require('express');
 const app = express();
 
 // Your code here
+app.use(express.json())
 
 // DO NOT MODIFY
 if (require.main === module) {
