@@ -32,6 +32,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/artists', (req, res, next) => {
+  let allArtists = getAllArtists();
+  return res.send(allArtists);
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
