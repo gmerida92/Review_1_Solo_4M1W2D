@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 
 app.get('/artists', (req, res, next) => {
   let allArtists = getAllArtists();
-  return res.send(allArtists);
+  return res.json(allArtists);
 })
 
 // DO NOT MODIFY
