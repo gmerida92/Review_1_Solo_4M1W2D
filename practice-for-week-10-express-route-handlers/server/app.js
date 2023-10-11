@@ -50,10 +50,17 @@ app.get('/artists/latest', (req, res, next) => {
   return res.json(latestArtist)
 })
 
-app.get('/artists/latest/albums', (req, res, next) => { 
+app.get('/artists/latest/albums', (req, res, next) => {
   let albumFromLatestArtist = getAlbumsForLatestArtist();
   res.status(200);
   return res.json(albumFromLatestArtist);
+})
+
+app.get('/artists/:artistId', (req, res, next) => {
+  let { artistId } = req.params;
+  let artistById = getArtistByArtistId(artistId);
+  res.status(200);
+  return res.json(artistById)
 })
 
 // DO NOT MODIFY
