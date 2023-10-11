@@ -1,4 +1,5 @@
 // Phase 2
+const { restart } = require('nodemon');
 const {
   getAllArtists,
   getLatestArtist,
@@ -61,6 +62,50 @@ app.get('/artists/:artistId', (req, res, next) => {
   let artistById = getArtistByArtistId(artistId);
   res.status(200);
   return res.json(artistById)
+})
+
+app.put('/artists/:artistId', (req, res, next) => {
+  let { artistId } = req.params;
+  // console.log(artistId)
+  let { name } = req.body;
+
+  let artistEdits = {
+    artistId: Number(artistId),
+    name: name
+  }
+
+  // console.log("HERE1", artistEdits)
+
+  let updatedArtist = editArtistByArtistId(artistId, artistEdits)
+  // console.log("HERE2", updatedArtist)
+  res.status(200);
+  return res.json(updatedArtist);
+})
+
+app.patch('/artists/:artistId', (req, res, next) => {
+  let { artistId } = req.params;
+  // console.log(artistId)
+  let { name } = req.body;
+
+  let artistEdits = {
+    artistId: Number(artistId),
+    name: name
+  }
+
+  // console.log("HERE1", artistEdits)
+
+  let updatedArtist = editArtistByArtistId(artistId, artistEdits)
+  // console.log("HERE2", updatedArtist)
+  res.status(200);
+  return res.json(updatedArtist);
+})
+
+app.delete('/artists/:artistId', (req, res, next) => {
+  let { artistId } = req.params;
+  deleteArtistByArtistId(artistId);
+  return res.json({
+    message: "Successfully deleted"
+  })
 })
 
 // DO NOT MODIFY
