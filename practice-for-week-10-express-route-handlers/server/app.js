@@ -108,6 +108,13 @@ app.delete('/artists/:artistId', (req, res, next) => {
   })
 })
 
+app.get('/artists/:artistId/albums', (req, res, next) => {
+  let { artistId } = req.params;
+  let artistAlbums = getAlbumsByArtistId(artistId);
+  res.status(200);
+  return res.json(artistAlbums);
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
