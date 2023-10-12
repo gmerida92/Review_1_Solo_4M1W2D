@@ -117,15 +117,13 @@ app.get('/artists/:artistId/albums', (req, res, next) => {
 
 app.post('/artists/:artistId/albums', (req, res, next) => {
   let { artistId } = req.params;
-  console.log('HERE1', artistId)
   let { name } = req.body;
-  console.log('HERE2', name)
+
   let newAlbum = {
     name: name
   }
-  console.log('HERE3', newAlbum)
+
   let addingAlbum = addAlbumByArtistId(artistId, newAlbum);
-  console.log('HERE4', addingAlbum)
   res.status(201)
   return res.json(addingAlbum);
 })
