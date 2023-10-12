@@ -115,6 +115,21 @@ app.get('/artists/:artistId/albums', (req, res, next) => {
   return res.json(artistAlbums);
 })
 
+app.post('/artists/:artistId/albums', (req, res, next) => {
+  let { artistId } = req.params;
+  console.log('HERE1', artistId)
+  let { name } = req.body;
+  console.log('HERE2', name)
+  let newAlbum = {
+    name: name
+  }
+  console.log('HERE3', newAlbum)
+  let addingAlbum = addAlbumByArtistId(artistId, newAlbum);
+  console.log('HERE4', addingAlbum)
+
+  return res.json(addingAlbum);
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
