@@ -126,7 +126,7 @@ app.post('/artists/:artistId/albums', (req, res, next) => {
   console.log('HERE3', newAlbum)
   let addingAlbum = addAlbumByArtistId(artistId, newAlbum);
   console.log('HERE4', addingAlbum)
-
+  res.status(201)
   return res.json(addingAlbum);
 })
 
