@@ -159,7 +159,7 @@ app.patch('/albums/:albumId', (req, res, next) => {
 app.delete('/albums/:albumId', (req, res, next) => {
   let { albumId } = req.params;
   deleteAlbumByAlbumId(albumId)
-  res.json({
+  return res.json({
     message: "Successfully deleted"
   })
 })
