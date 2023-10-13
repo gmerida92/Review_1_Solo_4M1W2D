@@ -142,6 +142,20 @@ app.put('/albums/:albumId', (req, res, next) => {
 
 })
 
+app.patch('/albums/:albumId', (req, res, next) => {
+  let { albumId } = req.params;
+  let { name } = req.body;
+
+  let albumEdit = {
+    name: name
+  };
+
+  let updatedAlbum = editAlbumByAlbumId(albumId, albumEdit);
+  res.status(200);
+  return res.json(updatedAlbum)
+
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
