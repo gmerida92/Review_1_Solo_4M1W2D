@@ -128,6 +128,13 @@ app.post('/artists/:artistId/albums', (req, res, next) => {
   return res.json(addingAlbum);
 })
 
+app.put('/albums/:albumId', (req, res, next) => {
+  let { albumeId } = req.params;
+  let { name } = req.body;
+
+  
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
