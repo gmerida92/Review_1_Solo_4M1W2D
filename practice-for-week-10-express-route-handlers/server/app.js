@@ -156,6 +156,14 @@ app.patch('/albums/:albumId', (req, res, next) => {
 
 })
 
+app.delete('/albums/:albumId', (req, res, next) => {
+  let { albumId } = req.params;
+  deleteAlbumByAlbumId(albumId)
+  res.json({
+    message: "Successfully deleted"
+  })
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
