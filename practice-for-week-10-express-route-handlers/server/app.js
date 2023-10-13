@@ -129,10 +129,17 @@ app.post('/artists/:artistId/albums', (req, res, next) => {
 })
 
 app.put('/albums/:albumId', (req, res, next) => {
-  let { albumeId } = req.params;
+  let { albumId } = req.params;
   let { name } = req.body;
 
-  
+  let albumEdit = {
+    name: name
+  };
+
+  let updatedAlbum = editAlbumByAlbumId(albumId, albumEdit);
+  res.status(200);
+  return res.json(updatedAlbum)
+
 })
 
 // DO NOT MODIFY
