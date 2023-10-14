@@ -164,6 +164,13 @@ app.delete('/albums/:albumId', (req, res, next) => {
   })
 })
 
+app.get('/albums?startsWith={letter}', (req, res, next) => {
+  let { startsWith } = req.query;
+  console.log("HERE1", startsWith)
+  let filteredAlbum = getFilteredAlbums(startsWith)
+  return res.json(filteredAlbum)
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
