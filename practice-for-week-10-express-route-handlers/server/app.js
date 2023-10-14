@@ -35,6 +35,7 @@ app.use(express.json())
 
 app.get('/artists', (req, res, next) => {
   let allArtists = getAllArtists();
+  // console.log("HERE HI")
   return res.json(allArtists);
 })
 
@@ -158,17 +159,18 @@ app.patch('/albums/:albumId', (req, res, next) => {
 
 app.delete('/albums/:albumId', (req, res, next) => {
   let { albumId } = req.params;
+  // console.log("HERE!", albumId)
   deleteAlbumByAlbumId(albumId)
   return res.json({
     message: "Successfully deleted"
   })
 })
 
-app.get('/albums?startsWith={letter}', (req, res, next) => {
+app.get('/albums', (req, res, next) => {
   let { startsWith } = req.query;
-  console.log("HERE1", startsWith)
-  let filteredAlbum = getFilteredAlbums(startsWith)
-  return res.json(filteredAlbum)
+  // console.log('HERE!', startsWith)
+  let filteredAlbums = getFilteredAlbums(startsWith);
+  return res.json(filteredAlbums);
 })
 
 // DO NOT MODIFY
