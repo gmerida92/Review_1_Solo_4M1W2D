@@ -179,7 +179,6 @@ app.patch('/albums/:albumId', (req, res, next) => {
 
 })
 
-
 // README-long-practice.md: Delete a specified album by albumId
 // npm test test/12-specs.js
 app.delete('/albums/:albumId', (req, res, next) => {
@@ -196,6 +195,33 @@ app.get('/albums', (req, res, next) => {
   let { startsWith } = req.query;
   let filteredAlbums = getFilteredAlbums(startsWith);
   return res.json(filteredAlbums);
+})
+
+// README-long-practice.md: Get a specific song's details based on songId
+// npm test test/14-specs.js
+app.get('/songs/:songId', (req, res, next) => {
+  let { songId } = req.params;
+  let song = getSongBySongId(songId);
+  res.status(200);
+  return res.json(song)
+})
+
+// README-long-practice.md: Add a song to a specific album based on albumId
+// npm test test/15-specs.js
+app.post('/albums/:albumId/songs', (req, res, next) => {
+  let { albumId } = req.params;
+  let { name, trackNumber, lyrics } = req.body;
+
+  let newSongDetail = {
+    name: name,
+    trackNumber: trackNumber,
+    lyrics: lyrics,
+    albumId: albumId
+  }
+
+  let newSong = addSongByAlbumId(albumId, newSongDetail);
+  res.status(201);
+  return res.json(newSong);
 })
 
 // DO NOT MODIFY
