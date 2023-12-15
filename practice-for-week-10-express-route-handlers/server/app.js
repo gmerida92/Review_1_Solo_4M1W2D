@@ -35,13 +35,14 @@ app.use(express.json())
 
 
 // README.md: Get all the artists
+// npm test test/01-specs.js
 app.get('/artists', (req, res, next) => {
   let allArtists = getAllArtists();
   return res.json(allArtists);
 })
 
-
 // README.md: Add an artist
+// npm test test/02-specs.js
 app.post('/artists', (req, res, next) => {
   let newArtist = req.body
   res.status(201)
@@ -49,6 +50,7 @@ app.post('/artists', (req, res, next) => {
 })
 
 // README-bonus.md: Get the latest artis added
+// npm test test/03-specs.js
 app.get('/artists/latest', (req, res, next) => {
   let latestArtist = getLatestArtist();
   res.status(200);
@@ -56,6 +58,7 @@ app.get('/artists/latest', (req, res, next) => {
 })
 
 // README-bonus.md: Get all albums of the latest artist
+// npm test test/04-specs.js
 app.get('/artists/latest/albums', (req, res, next) => {
   let albumFromLatestArtist = getAlbumsForLatestArtist();
   res.status(200);
@@ -63,6 +66,7 @@ app.get('/artists/latest/albums', (req, res, next) => {
 })
 
 // README-long-practice.md: Get a specific artist's details based on artistId
+// npm test test/05-specs.js
 app.get('/artists/:artistId', (req, res, next) => {
   let { artistId } = req.params;
   let artistById = getArtistByArtistId(artistId);
@@ -71,6 +75,7 @@ app.get('/artists/:artistId', (req, res, next) => {
 })
 
 // README-long-practice.md: Edit a specific artist by artist Id
+// npm test test/06-specs.js
 app.put('/artists/:artistId', (req, res, next) => {
   let { artistId } = req.params;
   let { name } = req.body;
@@ -80,15 +85,14 @@ app.put('/artists/:artistId', (req, res, next) => {
     name: name
   }
 
-
   let updatedArtist = editArtistByArtistId(artistId, artistEdits)
   res.status(200);
   return res.json(updatedArtist);
 })
 
+
 app.patch('/artists/:artistId', (req, res, next) => {
   let { artistId } = req.params;
-  // console.log(artistId)
   let { name } = req.body;
 
   let artistEdits = {
@@ -96,14 +100,14 @@ app.patch('/artists/:artistId', (req, res, next) => {
     name: name
   }
 
-  // console.log("HERE1", artistEdits)
-
   let updatedArtist = editArtistByArtistId(artistId, artistEdits)
-  // console.log("HERE2", updatedArtist)
   res.status(200);
   return res.json(updatedArtist);
 })
 
+
+// README-long-practice.md: Delete a specified artist by artist
+// npm test test/07-specs.js
 app.delete('/artists/:artistId', (req, res, next) => {
   let { artistId } = req.params;
   deleteArtistByArtistId(artistId);
@@ -112,6 +116,8 @@ app.delete('/artists/:artistId', (req, res, next) => {
   })
 })
 
+// README-long-practice.md: Get all albums of a specific artist based on artistId
+// npm test test/08-specs.js
 app.get('/artists/:artistId/albums', (req, res, next) => {
   let { artistId } = req.params;
   let artistAlbums = getAlbumsByArtistId(artistId);
@@ -119,6 +125,17 @@ app.get('/artists/:artistId/albums', (req, res, next) => {
   return res.json(artistAlbums);
 })
 
+// README-long-practice.md: Get a specific album's details based on albumId
+// npm test test/09-specs.js
+app.get('/albums/:albumId', (req, res, next) => {
+  let { albumId } = req.params;
+  let album = getAlbumByAlbumId(albumId);
+  res.status(200);
+  return res.json(album)
+})
+
+// README-long-practice.md: Add an album to a specific artist based on artistId
+// npm test test/10-specs.js
 app.post('/artists/:artistId/albums', (req, res, next) => {
   let { artistId } = req.params;
   let { name } = req.body;
@@ -132,6 +149,8 @@ app.post('/artists/:artistId/albums', (req, res, next) => {
   return res.json(addingAlbum);
 })
 
+// README-long-practice.md: Edit a specific album by albumId
+// npm test test/11-specs.js
 app.put('/albums/:albumId', (req, res, next) => {
   let { albumId } = req.params;
   let { name } = req.body;
@@ -160,18 +179,21 @@ app.patch('/albums/:albumId', (req, res, next) => {
 
 })
 
+
+// README-long-practice.md: Delete a specified album by albumId
+// npm test test/12-specs.js
 app.delete('/albums/:albumId', (req, res, next) => {
   let { albumId } = req.params;
-  // console.log("HERE!", albumId)
   deleteAlbumByAlbumId(albumId)
   return res.json({
     message: "Successfully deleted"
   })
 })
 
+// README-long-practice.md: Get all albums with names filtered by first letter
+// npm test test/13-specs.js
 app.get('/albums', (req, res, next) => {
   let { startsWith } = req.query;
-  // console.log('HERE!', startsWith)
   let filteredAlbums = getFilteredAlbums(startsWith);
   return res.json(filteredAlbums);
 })
