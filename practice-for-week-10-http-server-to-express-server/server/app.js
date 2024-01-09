@@ -45,6 +45,13 @@ app.use(express.json());
 
 // STEP 2: Handle route with param (/users/:userId) sending plain-text response
 // Your code here
+app.get('/users/:userId', (req, res, next) => {
+    let { userId } = req.params;
+    let message = `User details for userId: ${userId}`;
+    res.status(200);
+
+    return res.json(message);
+})
 
 // HTTP Server: Set port and listen for requests
 // const port = 5000;
