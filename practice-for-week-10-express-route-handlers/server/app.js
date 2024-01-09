@@ -258,6 +258,19 @@ app.put('/songs/:songId', (req, res, next) => {
   return res.json(updatedSong)
 })
 
+app.patch('/songs/:songId', (req, res, next) => {
+  let { songId } = req.params;
+  let {name, lyrics} = req.body;
+
+  let songEdits = {
+    name: name,
+    lyrics: lyrics
+  };
+
+  let updatedSong = editSongBySongId(songId, songEdits);
+  res.status(200);
+  return res.json(updatedSong)
+})
 
 // DO NOT MODIFY
 if (require.main === module) {
