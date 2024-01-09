@@ -227,7 +227,7 @@ app.post('/albums/:albumId/songs', (req, res, next) => {
 // README-long-practice.md: Get all songs of a specific artist based on artistId
 // npm test test/16-specs.js
 app.get('/artists/:artistId/songs', (req, res, next) => {
-  let {artistId} = req.params;
+  let { artistId } = req.params;
   let songsByArtist = getSongsByArtistId(artistId);
   res.status(200);
   return res.json(songsByArtist)
@@ -236,11 +236,28 @@ app.get('/artists/:artistId/songs', (req, res, next) => {
 // README-long-practice.md: Get all songs of a specific album based on albumId
 // npm test test/17-specs.js
 app.get('/albums/:albumId/songs', (req, res, next) => {
-  let {albumId} = req.params;
+  let { albumId } = req.params;
   let songsInAlbum = getSongsByAlbumId(albumId);
   res.status(200);
   return res.json(songsInAlbum);
 })
+
+// README-long-practice.md: Edit a specified song by songId
+// npm test test/18-specs.js
+app.put('/songs/:songId', (req, res, next) => {
+  let { songId } = req.params;
+  let {name, lyrics} = req.body;
+
+  let songEdits = {
+    name: name,
+    lyrics: lyrics
+  };
+
+  let updatedSong = editSongBySongId(songId, songEdits);
+  res.status(200);
+  return res.json(updatedSong)
+})
+
 
 // DO NOT MODIFY
 if (require.main === module) {
