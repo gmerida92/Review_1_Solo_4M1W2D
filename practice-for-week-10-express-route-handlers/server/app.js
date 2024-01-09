@@ -184,6 +184,7 @@ app.patch('/albums/:albumId', (req, res, next) => {
 app.delete('/albums/:albumId', (req, res, next) => {
   let { albumId } = req.params;
   deleteAlbumByAlbumId(albumId)
+  res.status(200);
   return res.json({
     message: "Successfully deleted"
   })
@@ -246,7 +247,7 @@ app.get('/albums/:albumId/songs', (req, res, next) => {
 // npm test test/18-specs.js
 app.put('/songs/:songId', (req, res, next) => {
   let { songId } = req.params;
-  let {name, lyrics} = req.body;
+  let { name, lyrics } = req.body;
 
   let songEdits = {
     name: name,
@@ -260,7 +261,7 @@ app.put('/songs/:songId', (req, res, next) => {
 
 app.patch('/songs/:songId', (req, res, next) => {
   let { songId } = req.params;
-  let {name, lyrics} = req.body;
+  let { name, lyrics } = req.body;
 
   let songEdits = {
     name: name,
@@ -271,6 +272,17 @@ app.patch('/songs/:songId', (req, res, next) => {
   res.status(200);
   return res.json(updatedSong)
 })
+
+// README-long-practice.md: Delete a specified song by songId
+// npm test test/19-specs.js
+app.delete('/songs/:songId', (req, res, next) => {
+  let { songId } = req.params;
+  deleteSongBySongId(songId);
+  res.status(200);
+  return res.json({
+    message: "Successfully deleted"
+  })
+});
 
 // DO NOT MODIFY
 if (require.main === module) {
