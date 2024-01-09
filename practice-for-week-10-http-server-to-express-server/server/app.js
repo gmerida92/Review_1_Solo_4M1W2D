@@ -1,12 +1,9 @@
+// STEP 1: Import and initialize server, configure for JSON requests
+// Your code here
+
 // HTTP Server - Import and initialize server
 // const http = require('http');
 // const server = http.createServer((req, res) => {
-
-// STEP 1: Import and initialize server, configure for JSON requests
-// Your code here
-const express = require('express');
-const app = express();
-app.use(express.json());
 
 // HTTP Server: Handle route with param (/users/:userId) sending plain-text response
 //     let reqBody = "";
@@ -41,6 +38,11 @@ app.use(express.json());
 //
 // });
 
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+
 // STEP 2: Handle route with param (/users/:userId) sending plain-text response
 // Your code here
 
@@ -50,3 +52,5 @@ app.use(express.json());
 
 // STEP 1: Set port and listen for requests
 // Your code here
+const port = 5000;
+app.listen(port, () => console.log('Server is listening on port', port));
