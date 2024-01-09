@@ -224,6 +224,15 @@ app.post('/albums/:albumId/songs', (req, res, next) => {
   return res.json(newSong);
 })
 
+// README-long-practice.md: Get all songs of a specific artist based on artistId
+// npm test test/16-specs.js
+app.get('/artists/:artistId/songs', (req, res, next) => {
+  let {artistId} = req.params;
+  let songsByArtist = getSongsByArtistId(artistId);
+  res.status(200);
+  return res.json(songsByArtist)
+})
+
 // DO NOT MODIFY
 if (require.main === module) {
   const port = 8000;
