@@ -4,6 +4,9 @@
 
 // STEP 1: Import and initialize server, configure for JSON requests
 // Your code here
+const express = require('express');
+const app = express();
+app.use(express.json());
 
 // HTTP Server: Handle route with param (/users/:userId) sending plain-text response
 //     let reqBody = "";
