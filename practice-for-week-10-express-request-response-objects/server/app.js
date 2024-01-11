@@ -69,6 +69,17 @@ app.get('/viewers/:id', (req, res, next) => {
  *          message required
  */
 // Your code here
+app.get('/info', (req, res, next) => {
+    let { message } = req.query;
+
+    if (message) {
+        res.status(200);
+        return res.send(message)
+    }
+    else {
+        return res.send('message required')
+    }
+})
 
 /**
  *  IMPORTANT: Scroll to the top for basic phases.
