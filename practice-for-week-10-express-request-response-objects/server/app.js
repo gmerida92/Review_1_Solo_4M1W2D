@@ -14,7 +14,9 @@ app.use(express.json());
 app.get('/version', (req, res, next) => {
     let responseText = '1.0.0';
     res.status(200);
-    return res.json(responseText)
+    return res.send(responseText)
+
+    // Note res.send returns content-type of text, while res.json returns application/json 
 })
 
 /**
