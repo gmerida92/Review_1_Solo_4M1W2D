@@ -11,6 +11,11 @@ app.use(express.json());
  *     Response (Text): "1.0.0"
  */
 // Your code here
+app.get('/version', (req, res, next) => {
+    let responseText = '1.0.0';
+    res.status(200);
+    return res.json(responseText)
+})
 
 /**
  *  Basic Phase 2 - Route param and JSON response
