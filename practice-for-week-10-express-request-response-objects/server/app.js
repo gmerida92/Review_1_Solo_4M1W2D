@@ -36,6 +36,17 @@ app.get('/version', (req, res, next) => {
  *  combined with the id sent as a route parameter in the url
  */
 // Your code here
+app.get('/viewers/:id', (req, res, next) => {
+    let { id } = req.params;
+    
+    let userObject = {
+        id: id,
+        firstName: 'George',
+        lastName: 'Merida',
+        birthDate: '02/14/1992',
+        favoriteMovies: ['Black Hawk Down', 'Back to the Future', 'Jurassic Park']
+    }
+})
 
 /** Basic Phase 3 - Query params in URL
  *      Method: GET
