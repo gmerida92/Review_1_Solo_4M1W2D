@@ -117,6 +117,11 @@ app.get('/info', (req, res, next) => {
 app.post('/movies', (req, res, next) => {
     let {name, year, isFavorite} = req.body;
     // console.log(name, year, isFavorite);
+    let newMovie = {
+        name: name,
+        year: year,
+        isFavorite: isFavorite
+    }
 })
 
 /**
