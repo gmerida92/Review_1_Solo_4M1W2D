@@ -115,15 +115,22 @@ app.get('/info', (req, res, next) => {
  */
 // Your code here
 app.post('/movies', (req, res, next) => {
-    let { name, year, isFavorite } = req.body;
+    let { name, year, favorite } = req.body;
     // console.log(name, year, isFavorite);
 
     let newMovie;
-    if (isFavorite === 'on') {
+    if (favoriteavorite === 'on') {
         newMovie = {
             name: name,
             year: year,
             isFavorite: true
+        }
+    }
+    else {
+        newMovie = {
+            name: name,
+            year: year,
+            isFavorite: false
         }
     }
 
