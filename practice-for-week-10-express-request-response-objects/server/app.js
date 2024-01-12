@@ -115,14 +115,18 @@ app.get('/info', (req, res, next) => {
  */
 // Your code here
 app.post('/movies', (req, res, next) => {
-    let {name, year, isFavorite} = req.body;
+    let { name, year, isFavorite } = req.body;
     // console.log(name, year, isFavorite);
-    let newMovie = {
-        name: name,
-        year: year,
-        isFavorite: isFavorite
+
+    let newMovie;
+    if (isFavorite === 'on') {
+        newMovie = {
+            name: name,
+            year: year,
+            isFavorite: true
+        }
     }
-    
+
     return res.json(newMovie)
 })
 
