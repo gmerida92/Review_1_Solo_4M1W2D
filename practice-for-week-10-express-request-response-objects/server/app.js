@@ -118,6 +118,7 @@ app.post('/movies', (req, res, next) => {
     let { name, year, favorite } = req.body;
 
     let id = Math.random()
+    console.log(id)
 
     let newMovie;
     if (favorite === 'on') {
