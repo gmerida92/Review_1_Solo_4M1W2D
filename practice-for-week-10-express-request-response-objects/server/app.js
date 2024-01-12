@@ -122,6 +122,8 @@ app.post('/movies', (req, res, next) => {
         year: year,
         isFavorite: isFavorite
     }
+    
+    return res.json(newMovie)
 })
 
 /**
