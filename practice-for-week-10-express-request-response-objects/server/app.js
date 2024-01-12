@@ -116,20 +116,21 @@ app.get('/info', (req, res, next) => {
 // Your code here
 app.post('/movies', (req, res, next) => {
     let { name, year, favorite } = req.body;
-    // console.log(name, year, isFavorite);
+
+    let id = Math.random()
 
     let newMovie;
-    if (favoriteavorite === 'on') {
+    if (favorite === 'on') {
         newMovie = {
             name: name,
-            year: year,
+            year: Number(year),
             isFavorite: true
         }
     }
     else {
         newMovie = {
             name: name,
-            year: year,
+            year: Number(year),
             isFavorite: false
         }
     }
