@@ -114,6 +114,10 @@ app.get('/info', (req, res, next) => {
  *          { "id": 98765432, "name": "Honey Sweet", "year": 1967, "isFavorite": false }
  */
 // Your code here
+app.post('/movies', (req, res, next) => {
+    let {name, year, isFavorite} = req.body;
+    // console.log(name, year, isFavorite);
+})
 
 /**
  *  Advanced Bonus Phase B - Research how to return static
