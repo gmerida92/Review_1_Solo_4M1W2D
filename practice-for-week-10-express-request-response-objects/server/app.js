@@ -116,13 +116,12 @@ app.get('/info', (req, res, next) => {
 // Your code here
 app.post('/movies', (req, res, next) => {
     let { name, year, favorite } = req.body;
-
-    let id = Math.random()
-    console.log(id)
+    let id = Math.floor(Math.random()*10000000)
 
     let newMovie;
     if (favorite === 'on') {
         newMovie = {
+            id: id,
             name: name,
             year: Number(year),
             isFavorite: true
@@ -130,6 +129,7 @@ app.post('/movies', (req, res, next) => {
     }
     else {
         newMovie = {
+            id: id,
             name: name,
             year: Number(year),
             isFavorite: false
@@ -137,7 +137,7 @@ app.post('/movies', (req, res, next) => {
     }
 
     return res.json(newMovie)
-})
+});
 
 /**
  *  Advanced Bonus Phase B - Research how to return static
