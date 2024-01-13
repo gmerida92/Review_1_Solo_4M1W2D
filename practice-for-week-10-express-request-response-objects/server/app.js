@@ -155,6 +155,7 @@ app.post('/movies', (req, res, next) => {
  *      Test route: /logo.png
  */
 // Your code here
+app.use(express.static('public'))
 
 // DO NOT EDIT - Set port and listener
 if (require.main === module) {
